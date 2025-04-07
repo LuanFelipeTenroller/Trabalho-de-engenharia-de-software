@@ -18,14 +18,10 @@ class FuncoesTest extends TestCase
         $this->assertEquals(120, Funcoes::factorial(5));
     }
 
-    public function testFahrenheitToCelsiusWithNegative()
+    public function testFactorialNegativeThrowsException()
     {
-        $this->assertEquals(-40, Funcoes::fahrenheitToCelsius(-40));
-    }
-
-    public function testFahrenheitToCelsiusWithDecimal()
-    {
-        $this->assertEquals(37.77777777777778, Funcoes::fahrenheitToCelsius(100), '', 0.0001);
+        $this->expectException(InvalidArgumentException::class);
+        Funcoes::factorial(-1);
     }
 
     public function testIsPalindrome()
@@ -46,6 +42,16 @@ class FuncoesTest extends TestCase
     {
         $this->assertEquals(0, Funcoes::fahrenheitToCelsius(32));
         $this->assertEquals(100, Funcoes::fahrenheitToCelsius(212));
+    }
+
+    public function testFahrenheitToCelsiusWithNegative()
+    {
+        $this->assertEquals(-40, Funcoes::fahrenheitToCelsius(-40));
+    }
+
+    public function testFahrenheitToCelsiusWithDecimal()
+    {
+        $this->assertEquals(37.77777777777778, Funcoes::fahrenheitToCelsius(100), '', 0.0001);
     }
 
     public function testCalculateDiscount()
